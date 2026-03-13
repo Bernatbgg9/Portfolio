@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bernat García</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed; 
+            background-size: cover;
+            color: #e0e0e0; 
+        }
+    
+        .top-nav {
+            background-color: rgba(15, 15, 20, 0.95); 
+            color: #ffffff;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 0.75rem 2rem; 
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+
+        .top-nav .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 2.5rem; 
+        }
+
+        .top-nav .lang-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .top-nav .lang-link:hover {
+            color: #ffffff;
+        }
+
+        .top-nav .lang-separator {
+            color: rgba(255, 255, 255, 0.3); 
+            font-weight: 100;
+        }
+
+        .top-nav .lang-active {
+            font-weight: 700; 
+            color: #ffffff;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 1.5rem; 
+        }
+
+        .top-nav .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        header { 
+            background-color: rgba(15, 15, 20, 0.9); 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 4rem 1rem; 
+            border-bottom: 3px solid #e74c3c;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        header p { 
+            font-size: 1.3rem; 
+            color: #bdc3c7; 
+            font-weight: 300;
+        }
+
+        main { 
+            max-width: 850px; 
+            margin: 3rem auto; 
+            padding: 0 1rem; 
+        }
+
+        section {
+            background: rgba(30, 32, 40, 0.85); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px); 
+        }
+
+        .section-title {
+            color: #ffffff;
+            border-bottom: 3px solid #e74c3c; 
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .about-content img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 4px solid #e74c3c; 
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.4); 
+        }
+
+        .project-card { 
+            margin-bottom: 3rem; 
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-title { 
+            margin-top: 0; 
+            color: #ffffff; 
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-container { 
+            position: relative; 
+            padding-bottom: 56.25%;
+            height: 0; 
+            overflow: hidden; 
+            margin-bottom: 1.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .video-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
+
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+            font-size: 1.05rem;
+        }
+
+        .project-link { 
+            display: inline-block; 
+            padding: 0.8rem 1.8rem; 
+            background-color: #e74c3c; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .project-link:hover { 
+            background-color: #c0392b; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap; 
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            padding: 0.8rem 1.8rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover { 
+            background-color: rgba(255, 255, 255, 0.2); 
+            transform: translateY(-2px);
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column; 
+                align-items: center; 
+                padding: 1rem;
+            }
+            .top-nav .lang-switcher {
+                margin-right: 0;
+                margin-bottom: 0.8rem;
+            }
+            .top-nav .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            header h1 { font-size: 2.2rem; }
+            .project-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="lang-switcher">
+            <a id="btn-en" class="lang-link">EN</a>
+            <span class="lang-separator">|</span>
+            <a id="btn-es" class="lang-link lang-active">ES</a>
+        </div>
+        <div class="nav-links">
+            <a href="#sobre-mi" data-i18n="nav-about">Sobre Mí</a>
+            <a href="#proyectos" data-i18n="nav-projects">Proyectos</a>
+            <a href="#contacto" data-i18n="nav-contact">Contactar</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Bernat García</h1>
+        <p data-i18n="header-role">Desarrollador de Videojuegos</p>
+    </header>
+
+    <main>
+        <section id="sobre-mi">
+            <h2 class="section-title" data-i18n="about-title">Sobre mí</h2>
+            <div class="about-content">
+                <img src="C:\Users\Bernat\Desktop\Portfolio\fotoCarnet.png" alt="Foto de Bernat">
+                <div>
+                    <p data-i18n="about-text">Soy un apasionado del desarrollo de videojuegos y siempre tengo ganas de afrontar nuevos retos. Soy una persona creativa y proactiva que disfruta trabajando en un entorno de equipo. A través de diversos proyectos, he adquirido experiencia práctica en diseño de juegos, programación y animación 3D. Mi experiencia como entrenador de jóvenes me ha ayudado a desarrollar sólidas habilidades de liderazgo y gestión de grupos. Estoy constantemente buscando oportunidades para aprender, crecer y contribuir a proyectos. Por mi cuenta también he aprendido HTML haciendo proyectos como una página web de ventas o esta misma página.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2 class="section-title" data-i18n="projects-title">Mis Proyectos</h2>
+            
+            <article class="project-card">
+                <h3 class="project-title">RayBoy</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/LvBI2KdlZwk" title="Video Gameplay RayBoy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="project-description" data-i18n="desc-rayboy">
+                    He participado como programador en un juego de plataformas 2D.
+                </p>
+                <a href="https://rayboyy.itch.io/rayboy" class="project-link" target="_blank" data-i18n="btn-download">Descargar Proyecto</a>
+            </article>
+
+            <article class="project-card">
+                <h3 class="project-title">TimeS*cks</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/AtlgZ_brpkw" title="Video Gameplay TimeS*cks" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="project-description" data-i18n="desc-timescks">
+                    He participado como programador en un shooter 3D en el que tienes que escapar de una cárcel.
+                </p>
+                <a href="https://opa-studio.itch.io/time-scks" class="project-link" target="_blank" data-i18n="btn-download">Descargar Proyecto</a>
+            </article>
+        </section>
+
+        <section id="contacto">
+            <h2 class="section-title" data-i18n="contact-title">Contacto</h2>
+            <p data-i18n="contact-text">¿Te interesa mi perfil o quieres hablar sobre un proyecto? ¡No dudes en escribirme! Puedes encontrarme en las siguientes plataformas:</p>
+            
+            <div class="contact-links">
+                <a href="mailto:bernatbgg9@gmail.com" class="contact-btn" data-i18n="btn-email">✉️ Enviar Email</a>
+                <a href="https://www.linkedin.com/in/bernat-garcia-806a48290/" class="contact-btn" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Bernatbgg9" class="contact-btn" target="_blank">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            es: {
+                "nav-about": "Sobre Mí",
+                "nav-projects": "Proyectos",
+                "nav-contact": "Contactar",
+                "header-role": "Desarrollador de Videojuegos",
+                "about-title": "Sobre mí",
+                "about-text": "Soy un apasionado del desarrollo de videojuegos y siempre tengo ganas de afrontar nuevos retos. Soy una persona creativa y proactiva que disfruta trabajando en un entorno de equipo. A través de diversos proyectos, he adquirido experiencia práctica en diseño de juegos, programación y animación 3D. Mi experiencia como entrenador de jóvenes me ha ayudado a desarrollar sólidas habilidades de liderazgo y gestión de grupos. Estoy constantemente buscando oportunidades para aprender, crecer y contribuir a proyectos. Por mi cuenta también he aprendido HTML haciendo proyectos como una página web de ventas o esta misma página.",
+                "projects-title": "Mis Proyectos",
+                "desc-rayboy": "He participado como programador en un juego de plataformas 2D.",
+                "desc-timescks": "He participado como programador en un shooter 3D en el que tienes que escapar de una cárcel.",
+                "btn-download": "Descargar Proyecto",
+                "contact-title": "Contacto",
+                "contact-text": "¿Te interesa mi perfil o quieres hablar sobre un proyecto? ¡No dudes en escribirme! Puedes encontrarme en las siguientes plataformas:",
+                "btn-email": "✉️ Enviar Email"
+            },
+            en: {
+                "nav-about": "About Me",
+                "nav-projects": "Projects",
+                "nav-contact": "Contact",
+                "header-role": "Video Game Developer",
+                "about-title": "About Me",
+                "about-text": "I am passionate about video game development and always eager to take on new challenges. I am a creative and proactive person who enjoys working in a team environment. Through various projects, I have gained practical experience in game design, programming, and 3D animation. My experience as a youth coach has helped me develop strong leadership and group management skills. I am constantly looking for opportunities to learn, grow, and contribute to projects. On my own, I have also learned HTML by building projects like a sales website or this very page.",
+                "projects-title": "My Projects",
+                "desc-rayboy": "I participated as a programmer in a 2D platformer game.",
+                "desc-timescks": "I participated as a programmer in a 3D shooter where you have to escape from a prison.",
+                "btn-download": "Download Project",
+                "contact-title": "Contact",
+                "contact-text": "Are you interested in my profile or want to talk about a project? Don't hesitate to write to me! You can find me on the following platforms:",
+                "btn-email": "✉️ Send Email"
+            }
+        };
+
+        const btnEn = document.getElementById('btn-en');
+        const btnEs = document.getElementById('btn-es');
+        const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+
+        function setLanguage(language) {
+            elementsToTranslate.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = translations[language][key];
+            });
+
+            if (language === 'en') {
+                btnEn.classList.add('lang-active');
+                btnEs.classList.remove('lang-active');
+                document.documentElement.lang = 'en'; 
+            } else {
+                btnEs.classList.add('lang-active');
+                btnEn.classList.remove('lang-active');
+                document.documentElement.lang = 'es';
+            }
+        }
+
+        btnEn.addEventListener('click', () => setLanguage('en'));
+        btnEs.addEventListener('click', () => setLanguage('es'));
+    </script>
+</body>
+</html>
